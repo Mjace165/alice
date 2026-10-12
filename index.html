@@ -1,0 +1,754 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#170824">
+<title>Happy Birthday Alice ❤️</title>
+
+<style>
+:root {
+  --pink: #ff4fa3;
+  --light-pink: #ffb5d8;
+  --gold: #ffdc78;
+  --purple: #a855f7;
+  --dark: #10051e;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: radial-gradient(ellipse at top, #411452, var(--dark) 70%);
+  color: white;
+  font-family: "Segoe UI", Arial, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px 6%;
+  background: #10051eee;
+  border-bottom: 1px solid #ff4fa355;
+  backdrop-filter: blur(15px);
+}
+.logo {
+  color: var(--gold);
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.nav-links a:hover { color: var(--pink); }
+
+section {
+  padding: 75px 7%;
+  scroll-margin-top: 65px;
+  position: relative;
+  z-index: 1;
+}
+.hero {
+  min-height: 82vh;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 35px;
+}
+.eyebrow {
+  color: var(--pink);
+  letter-spacing: 2px;
+  font-size: .85rem;
+  font-weight: 800;
+}
+h1 {
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  line-height: 1.05;
+  margin: 18px 0;
+  color: var(--gold);
+  text-shadow: 0 0 25px #ffb52f66;
+}
+.script {
+  color: var(--light-pink);
+  font-style: italic;
+}
+.hero h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); }
+.hero p {
+  max-width: 560px;
+  color: #e6dcef;
+  margin-top: 15px;
+}
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 35px;
+  padding: 13px 22px;
+  margin: 20px 7px 0 0;
+  background: linear-gradient(100deg, #ff3192, #a52aff);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 5px 25px #ff319244;
+  transition: .3s;
+}
+.btn:hover { transform: translateY(-3px) scale(1.03); }
+.btn.alt {
+  background: transparent;
+  border: 1px solid var(--gold);
+}
+.cake {
+  text-align: center;
+  font-size: clamp(9rem, 24vw, 17rem);
+  filter: drop-shadow(0 0 35px #ff319266);
+  animation: floatCake 3s ease-in-out infinite;
+}
+@keyframes floatCake {
+  50% { transform: translateY(-16px) rotate(2deg); }
+}
+
+.panel {
+  padding: 28px;
+  border: 1px solid #d66dff66;
+  border-radius: 24px;
+  background: #ffffff09;
+  box-shadow: 0 12px 35px #0002;
+}
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 10px;
+  color: var(--light-pink);
+}
+.intro {
+  color: #d4c5e8;
+  margin-bottom: 25px;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.photo {
+  overflow: hidden;
+  background: #211033;
+  border: 1px solid #ffffff22;
+  border-radius: 17px;
+  transition: .3s;
+}
+.photo:hover {
+  transform: translateY(-5px);
+  border-color: var(--pink);
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.photo p { padding: 12px; color: #ffe4f3; }
+.photo input {
+  width: 100%;
+  padding: 8px;
+  color: white;
+  background: #30203d;
+  border: 0;
+  font-size: .8rem;
+}
+.photo input::file-selector-button { cursor: pointer; }
+
+.message-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: stretch;
+}
+.letter-card {
+  padding: 30px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #50145f, #1a0c30);
+  border: 1px solid #ff4fa377;
+}
+.letter-card p { color: #f0e5fa; }
+.letter-icon { font-size: 6rem; text-align: center; }
+.hidden { display: none; }
+
+.wishes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+.wish {
+  text-align: center;
+  padding: 23px 12px;
+  border-radius: 18px;
+  border: 1px solid #ffffff1c;
+  background: #ffffff08;
+}
+.wish span { display: block; font-size: 2.5rem; }
+.wish h3 { color: var(--gold); margin-top: 8px; }
+.wish p { color: #d3c5e7; font-size: .9rem; }
+
+.gifts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+.gift {
+  padding: 25px 12px;
+  color: white;
+  background: #ffffff09;
+  border: 1px solid #b65cff66;
+  border-radius: 20px;
+  font-size: 1rem;
+  transition: .3s;
+}
+.gift:hover {
+  background: #a855f733;
+  transform: scale(1.04);
+}
+.gift span { display: block; font-size: 4rem; }
+#surpriseMessage {
+  text-align: center;
+  color: var(--gold);
+  margin: 25px auto 0;
+  max-width: 700px;
+  font-size: 1.15rem;
+  min-height: 35px;
+}
+.final {
+  text-align: center;
+  padding-top: 35px;
+}
+.final h2 { font-size: clamp(2rem, 6vw, 4rem); }
+footer {
+  text-align: center;
+  padding: 35px 15px;
+  color: #d2c3e7;
+  border-top: 1px solid #ffffff16;
+  position: relative;
+  z-index: 1;
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 12, 24, 0.82);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 40;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 18px;
+  object-fit: contain;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #2d1233;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+#musicBtn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 25;
+  margin: 0;
+}
+#confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 30;
+}
+.float {
+  position: fixed;
+  bottom: -80px;
+  font-size: 35px;
+  opacity: .7;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatUp 12s linear infinite;
+}
+@keyframes floatUp {
+  to { transform: translateY(-120vh) rotate(360deg); }
+}
+.float:nth-of-type(2) { left: 5%; }
+.float:nth-of-type(3) { left: 87%; animation-delay: 4s; }
+.float:nth-of-type(4) { left: 48%; animation-delay: 7s; }
+
+@media (max-width: 760px) {
+  nav { justify-content: center; }
+  .nav-links { justify-content: center; gap: 12px; font-size: .9rem; }
+  .hero, .message-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero { padding-top: 50px; }
+  .hero p { margin: 15px auto 0; }
+  .cake { font-size: 10rem; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .photo img { height: 180px; }
+  .wishes { grid-template-columns: repeat(2, 1fr); }
+  .gifts { grid-template-columns: 1fr; }
+}
+@media (max-width: 390px) {
+  .gallery { grid-template-columns: 1fr; }
+  section { padding: 55px 5%; }
+}
+</style>
+</head>
+
+<body>
+<canvas id="confetti"></canvas>
+
+<nav>
+  <div class="logo">🎁 Alice's Birthday</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#gallery">Photos</a>
+    <a href="#message">Letter</a>
+    <a href="#wishes">Wishes</a>
+    <a href="#surprise">Surprises</a>
+  </div>
+</nav>
+
+<div class="float">🎈</div>
+<div class="float">🎈</div>
+<div class="float">✨</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">❤️ MADE WITH LOVE FOR MY SISTER ❤️</div>
+    <h1>Happy<br>Birthday!</h1>
+    <h2 class="script">Dear Alice 🌸💖</h2>
+    <p>
+      Happy Birthday to my beautiful sister, Alice!
+      You are a precious blessing in my life. May your days
+      be filled with happiness, your heart with peace, and
+      your future with success. May all your beautiful dreams
+      come true, and may you always have reasons to smile.
+      You deserve all the wonderful things life has to offer!
+    </p>
+    <a class="btn" href="#surprise">🎁 Open Your Surprises</a>
+    <button class="btn alt" onclick="celebrate()">🎉 Celebrate Alice!</button>
+  </div>
+  <div class="cake">🎂💐</div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="gallery">
+  <h2 class="section-title script">📸 Beautiful Memories</h2>
+  <p class="intro">
+    Alice, every picture tells a story. Add your favourite
+    pictures below to make this celebration more personal.
+  </p>
+
+  <div class="gallery">
+    <div class="photo">
+      <img id="img1" src="photo-1.jpg" alt="Beautiful memories">
+      <p>Beautiful Memories 💖</p>
+    </div>
+    <div class="photo">
+      <img id="img2" src="img-2.jpg" alt="Love and happiness">
+      <p>Love & Happiness 🌸</p>
+    </div>
+    <div class="photo">
+      <img id="img3" src="img-3.jpg" alt="Birthday celebration">
+      <p>Birthday Celebration 🎂</p>
+    </div>
+    <div class="photo">
+      <img id="img4" src="img-4.jpg" alt="Family moments">
+      <p>Family Moments 🥰</p>
+    </div>
+    <div class="photo">
+      <img id="img5" src="img-7.jpg" alt="Happy times">
+      <p>Happy Times 💕</p>
+    </div>
+    <div class="photo">
+      <img id="img6" src="img-6.jpg" alt="Special celebration">
+      <p>More Memories 🎉</p>
+    </div>
+  </div>
+  <p class="intro" style="margin-top:15px">
+    Tip: Use the Choose File buttons to select Alice's pictures
+    from your phone or computer.
+  </p>
+</section>
+
+<!-- PERSONAL LETTER -->
+<section id="message">
+  <div class="message-grid">
+    <div class="panel" style="text-align:center">
+      <div class="letter-icon">💌</div>
+      <h2 class="section-title script">A Letter for Alice</h2>
+      <p class="intro">A little message straight from the heart.</p>
+      <button class="btn" onclick="openLetter()">Open My Letter 💗</button>
+    </div>
+
+    <div class="letter-card">
+      <h2>To My Dearest Sister ❤️</h2>
+      <p>
+        Happy Birthday, Alice! Today, we celebrate not just
+        another year of your life, but the amazing person you are.
+        You bring something special to our family, and I am
+        grateful to have you as my sister.
+      </p>
+
+      <div id="letter" class="hidden">
+        <p style="margin-top:15px">
+          I pray that this new chapter brings you peace,
+          good health, genuine happiness, and wonderful
+          opportunities. May your hard work bring success,
+          your dreams become reality, and your heart always
+          have a reason to rejoice.
+        </p>
+        <p style="margin-top:15px">
+          Whenever life becomes difficult, remember how strong
+          and special you are. Keep shining, keep growing,
+          and never stop believing in yourself.
+        </p>
+        <h3 class="script" style="margin-top:15px">
+          I love you always, Sis! 💕
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIRTHDAY WISHES -->
+<section id="wishes">
+  <h2 class="section-title script" style="text-align:center">
+    My Wishes for You 🌷
+  </h2>
+  <p class="intro" style="text-align:center">
+    Alice, may these beautiful blessings follow you always.
+  </p>
+
+  <div class="wishes">
+    <div class="wish">
+      <span>💖</span>
+      <h3>More Love</h3>
+      <p>May you always be surrounded by people who truly care.</p>
+    </div>
+    <div class="wish">
+      <span>🌈</span>
+      <h3>More Joy</h3>
+      <p>May happiness and laughter fill your everyday life.</p>
+    </div>
+    <div class="wish">
+      <span>🌟</span>
+      <h3>More Success</h3>
+      <p>May your plans prosper and your dreams come true.</p>
+    </div>
+    <div class="wish">
+      <span>🙏</span>
+      <h3>More Blessings</h3>
+      <p>May God guide, protect, and bless you abundantly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE GIFTS -->
+<section id="surprise">
+  <h2 class="section-title script" style="text-align:center">
+    🎁 Pick a Surprise, Alice!
+  </h2>
+  <p class="intro" style="text-align:center">
+    Every gift holds a special birthday wish just for you.
+  </p>
+
+  <div class="gifts">
+    <button class="gift" onclick="openGift(0)">
+      <span>🎁</span>Gift of Happiness
+    </button>
+    <button class="gift" onclick="openGift(1)">
+      <span>🎀</span>Gift of Love
+    </button>
+    <button class="gift" onclick="openGift(2)">
+      <span>💝</span>Gift of Blessings
+    </button>
+  </div>
+
+  <div id="surpriseMessage" aria-live="polite"></div>
+
+  <div style="text-align:center">
+    <button class="btn" onclick="celebrate()">🎊 Release the Confetti!</button>
+  </div>
+</section>
+
+<!-- ENDING -->
+<section class="final">
+  <div style="font-size:4rem">🎂 🎈 💐</div>
+  <h2 class="script">Happy Birthday, Alice!</h2>
+  <p style="color:#e6dcef;margin-top:15px">
+    May your new age be beautiful, blessed, and full of love.
+  </p>
+  <p style="color:var(--gold);margin-top:10px">
+    Forever your loving sibling. ❤️
+  </p>
+  <button class="btn" onclick="celebrate()">One More Celebration! 🎉</button>
+</section>
+
+<footer>
+  <h3 class="script">Made with love for Alice ❤️</h3>
+  <p>May your light continue to shine! ✨</p>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="close-lightbox" id="closeLightbox" aria-label="Close image">×</button>
+  <img id="lightboxImage" src="" alt="Enlarged birthday photo" />
+</div>
+
+<button class="btn" id="musicBtn" onclick="toggleMusic()">
+  🎵 Play Music
+</button>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeLightboxBtn = document.getElementById("closeLightbox");
+
+function openLightbox(src) {
+  lightboxImage.src = src;
+  lightbox.classList.add("open");
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+  lightboxImage.src = "";
+}
+
+closeLightboxBtn.addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeLightbox();
+});
+
+document.querySelectorAll(".photo img").forEach((img) => {
+  img.addEventListener("click", () => openLightbox(img.src));
+});
+
+// Select a picture from your device
+const photoUrls = {};
+
+function loadPhoto(event, imageId) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please select an image file.");
+    return;
+  }
+
+  if (photoUrls[imageId]) {
+    URL.revokeObjectURL(photoUrls[imageId]);
+  }
+
+  const url = URL.createObjectURL(file);
+  photoUrls[imageId] = url;
+  document.getElementById(imageId).src = url;
+}
+
+// Open or close Alice's personal letter
+function openLetter() {
+  const letter = document.getElementById("letter");
+  letter.classList.toggle("hidden");
+
+  if (!letter.classList.contains("hidden")) {
+    celebrate();
+  }
+}
+
+// Birthday surprise messages
+const surprises = [
+  "💖 Gift of Happiness: Alice, may your smile never fade and may your heart always be full of joy!",
+  "🎀 Gift of Love: You will always be a special part of my life. May you receive all the love you deserve!",
+  "🙏 Gift of Blessings: May God order your steps, protect you, grant your heart's desires, and bless your new age abundantly!"
+];
+
+function openGift(index) {
+  document.getElementById("surpriseMessage").textContent =
+    surprises[index];
+  celebrate();
+}
+
+// Confetti animation
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+let pieces = [];
+let animating = false;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function celebrate() {
+  const colors = [
+    "#ff4fa3", "#ffdc78", "#a855f7",
+    "#40e0d0", "#ffffff", "#ff7a59"
+  ];
+
+  for (let i = 0; i < 150; i++) {
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: -20 - Math.random() * canvas.height * 0.5,
+      size: 4 + Math.random() * 7,
+      speed: 2 + Math.random() * 5,
+      drift: Math.random() * 3 - 1.5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rotation: Math.random() * 6
+    });
+  }
+
+  if (!animating) animateConfetti();
+}
+
+function animateConfetti() {
+  animating = true;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  pieces.forEach(p => {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rotation);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.5);
+    ctx.restore();
+
+    p.y += p.speed;
+    p.x += p.drift;
+    p.rotation += 0.04;
+  });
+
+  pieces = pieces.filter(p => p.y < canvas.height + 30);
+
+  if (pieces.length) {
+    requestAnimationFrame(animateConfetti);
+  } else {
+    animating = false;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+}
+
+// Background music generated directly in the browser
+// No external music file is required.
+let audioContext;
+let musicPlaying = false;
+let musicTimer;
+let noteIndex = 0;
+let masterGain;
+
+const melody = [
+  [523.25, 0.24], [659.25, 0.24], [783.99, 0.30],
+  [659.25, 0.24], [698.46, 0.24], [783.99, 0.40],
+  [587.33, 0.24], [698.46, 0.24], [880.00, 0.40],
+  [783.99, 0.24], [659.25, 0.24], [523.25, 0.50]
+];
+
+function playNote() {
+  if (!musicPlaying || !audioContext) return;
+
+  const [frequency, duration] =
+    melody[noteIndex % melody.length];
+
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = frequency;
+
+  gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.07, audioContext.currentTime + 0.03
+  );
+  gain.gain.exponentialRampToValueAtTime(
+    0.0001, audioContext.currentTime + duration
+  );
+
+  oscillator.connect(gain);
+  gain.connect(masterGain);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + duration + 0.05);
+
+  noteIndex++;
+  musicTimer = setTimeout(playNote, duration * 650);
+}
+
+async function toggleMusic() {
+  const button = document.getElementById("musicBtn");
+
+  if (!audioContext) {
+    const AudioCtx =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioCtx) {
+      button.textContent = "Audio unavailable";
+      return;
+    }
+
+    audioContext = new AudioCtx();
+    masterGain = audioContext.createGain();
+    masterGain.gain.value = 0.45;
+    masterGain.connect(audioContext.destination);
+  }
+
+  if (musicPlaying) {
+    musicPlaying = false;
+    clearTimeout(musicTimer);
+    await audioContext.suspend();
+    button.textContent = "🎵 Play Music";
+  } else {
+    await audioContext.resume();
+    musicPlaying = true;
+    button.textContent = "⏸ Pause Music";
+    playNote();
+  }
+}
+
+// A small welcome celebration
+window.addEventListener("load", () => {
+  setTimeout(celebrate, 700);
+});
+</script>
+
+</body>
+</html>
